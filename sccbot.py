@@ -8,8 +8,8 @@ from secrets import token_hex
 __author__ = "@pgarcgo"
 __version__ = "0.1"
 
-name = "CervantesCurator"
-steem_curation_account = "cervantes.account"
+name = "Steem Community Curation BOT"
+steem_curation_account = "sccb"
 
 TOKEN = 'NDM0Mzc0NDEwNzcwNTc5NDYy.DbJgIQ.dggA7YLdly30MeSRto-8Z0gbyAE'
 
@@ -21,16 +21,16 @@ canales = [{"name":"ciencia", "category":"promocion", "id":0},
            {"name":"gente_nueva", "category":"post_curables", "id":0}]
 
 
-bot = commands.Bot(command_prefix='!') #
+bot = commands.Bot(command_prefix='!') 
 
 
-@bot.event
-async def on_message(message):
+# @bot.event
+# async def on_message(message):
     
-    if(message.author == bot.user):
-        return
+#     if(message.author == bot.user):
+#         return
         
-    print(dir(message.channel))
+#     print(dir(message.channel))
 
     
 @bot.command()
@@ -53,7 +53,6 @@ async def verifica():
 
     await bot.say("Verificando...")
     
-#bot.add_command(registrame)
 
-print("Running...")
+print("Discord.py version: " + discord.__version__)
 bot.run(TOKEN)
