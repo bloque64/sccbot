@@ -52,6 +52,11 @@ async def cc():
 async def verifica():
 
     await bot.say("Verificando...")
+
+
+@bot.command()
+async def foo(ctx):
+    await ctx.send('Hello')
     
 
 print("Discord.py version: " + discord.__version__)
