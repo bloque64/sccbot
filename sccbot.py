@@ -14,27 +14,38 @@ name = "Steem Community Curation BOT"
 steem_curation_account = "sccb"
 
 
-my_settings = Settings()
-my_settings.load()
+settings = Settings()
+settings.load()
 
-TOKEN = my_settings.discord_token
+TOKEN = settings.discord_token
 
 
 bot = commands.Bot(command_prefix='!') 
 
-# @bot.event
-# async def on_message(message):
-    
-#     if(message.author == bot.user):
-#         return
-        
-#     print(dir(message.channel))
 
 
-@bot.command
+
+@bot.command()
 async def init(ctx):
+    guild = ctx.guild
     await ctx.send("Inicitalizing channel structure...")
+
+    categories = settings.get_categories()
+    for c in categories:
+        await ctx.send("Creating category: %s" % c)
+        cat = await guild.create_category(c["name"])
+        settings.set_category_id(c["name"], cat.id)
+        channels = settings.get_channels_by_cat(c["name"])
+        for ch in channels:
+            chan = await guild.create_text_channel(ch["name"], category=cat)
     
+    settings.save()
+
+@bot.command()
+async def del(ctx):
+    guild = ctx.guild
+    await ctx.send("Deleting channel structure...")
+ 
 
 @bot.command()
 async def reg(ctx, account_name):
@@ -52,6 +63,19 @@ async def faa(ctx):
 @bot.command()
 async def foo(ctx):
     await ctx.send('Hello')
+
+
+@bot.listen()
+async def on_message(message):
+    
+    channel = message.channel
+
+    if(message.author == bot.user):
+        return
+
+    
+    await channel.send(message.content)
+
     
 print("Runnng bot...")
 bot.run(TOKEN)
