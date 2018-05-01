@@ -41,7 +41,7 @@ class Settings():
             raise Exception("Could not found channel %s in category %s .." % (channel_name, category_name))
 
     
-    def is_channel_deletable(id):
+    def is_channel_deletable(self, id):
         for c in self.channels:
             if(c["id"]==id) and c["deletable"]==True:
                 return True
@@ -51,7 +51,7 @@ class Settings():
 
 
     
-    def get_categories(self):
+    def get_categories(self, self):
         return(self.categories)
 
     def get_channels(self):
@@ -112,6 +112,12 @@ def test_set_channel_id():
     my_settings.set_channel_id(channel_name="ciencia", category_name="PROMOCION", id=123455)
     print(my_settings)
 
+def test_is_channel_deletable()
+
+    my_settings = Settings()
+    #my_settings.save()
+    my_settings.load()
+    my_settings.is_channel_deletable()
 
 if __name__ == "__main__":
 

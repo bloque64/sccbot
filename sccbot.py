@@ -42,7 +42,7 @@ async def init(ctx):
     settings.save()
 
 @bot.command()
-async def del(ctx):
+async def delete(ctx):
     guild = ctx.guild
     await ctx.send("Deleting channel structure...")
  
