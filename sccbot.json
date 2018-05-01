@@ -1,0 +1,41 @@
+{
+    "categories": [
+        {
+            "deletable": false,
+            "id": 0,
+            "name": "PROMOCION"
+        },
+        {
+            "deletable": true,
+            "id": 0,
+            "name": "POSTS_CURABLES"
+        }
+    ],
+    "channels": [
+        {
+            "category": "PROMOCION",
+            "deletable": false,
+            "id": 0,
+            "name": "ciencia"
+        },
+        {
+            "category": "PROMOCION",
+            "deletable": true,
+            "id": 0,
+            "name": "gente_nueva"
+        },
+        {
+            "category": "POSTS_CURABLES",
+            "deletable": true,
+            "id": 0,
+            "name": "ciencia"
+        },
+        {
+            "category": "POSTS_CURABLES",
+            "deletable": true,
+            "id": 0,
+            "name": "gente_nueva"
+        }
+    ],
+    "discord_token": "NDM0Mzc0NDEwNzcwNTc5NDYy.DbJgIQ.dggA7YLdly30MeSRto-8Z0gbyAE"
+}
