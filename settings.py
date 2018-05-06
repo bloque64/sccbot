@@ -47,11 +47,9 @@ class Settings():
                 return True
 
         return(False)
-            
-
-
+        
     
-    def get_categories(self, self):
+    def get_categories(self):
         return(self.categories)
 
     def get_channels(self):
@@ -112,7 +110,9 @@ def test_set_channel_id():
     my_settings.set_channel_id(channel_name="ciencia", category_name="PROMOCION", id=123455)
     print(my_settings)
 
-def test_is_channel_deletable()
+    
+
+def test_is_channel_deletable():
 
     my_settings = Settings()
     #my_settings.save()

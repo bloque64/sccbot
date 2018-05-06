@@ -2,12 +2,12 @@
     "categories": [
         {
             "deletable": false,
-            "id": 0,
+            "id": 442265677819019275,
             "name": "PROMOCION"
         },
         {
             "deletable": true,
-            "id": 0,
+            "id": 442265680469950474,
             "name": "POSTS_CURABLES"
         }
     ],
