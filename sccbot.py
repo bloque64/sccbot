@@ -5,6 +5,9 @@ from secrets import token_hex
 from settings import Settings
 import data
 import evaluator
+import register
+import curator
+import traceback
 
 __author__ = "@pgarcgo"
 __version__ = "0.1"
@@ -12,11 +15,14 @@ __version__ = "0.1"
 name = "Steem Community Curation BOT"
 steem_curation_account = "sccb"
 
+sa_session = data.init()
 
 settings = Settings()
 settings.load()
 
 message_evaluator = evaluator.MessageEvaluator()
+user_registerer = register.UserRegisterer(sa_session)
+curator = curator.Curator()
 
 TOKEN = settings.discord_token
 
@@ -83,14 +89,36 @@ async def delete(ctx):
     for c in settings.get_channels():
         print()
         await ctx.send("Deleting channel: %s" % c)
- 
+
+
 @bot.command()
-async def reg(ctx, account_name):
-    print("Reg...")
-    await ctx.send("Associendo tu cuenta de discord con la cuenta en Steem: " + account_name)
-    register_token = token_hex(16)
-    msg = "Manda 0.001 SBD a la cuenta ***"  + steem_curation_account + "*** con este Memo: " + register_token + " y ejecuta el comando ***!verifica " + account_name + "*** para finlizar el registro"
-    await ctx.send(msg)
+async def list_users(ctx):
+    guild = ctx.guild
+    await ctx.send("Listing registered user:")
+    users = user_registerer.get_users()
+    for u in users:
+        await ctx.send("   %s (%s) => @%s (STATUS: %s)" % (u.discord_member_name,
+                                                           u.discord_member_id,
+                                                           u.steem_account,
+                                                           u.verification_status)) 
+@bot.command()
+async def reg(ctx, account_name=""):
+
+
+    if(account_name==""):
+        await ctx.send("You need to specify a valid steem account as first parameter!")
+    else:
+        discord_user =  ctx.message.author
+        try:
+            user_registerer.map_user(discord_user.id, discord_user.name, account_name)
+            await ctx.send("Added steem account to the registering qeue: " + account_name)
+            register_token = token_hex(16)
+            msg = "Sent 0.001 SBD to this following account  ***"  + steem_curation_account + "*** using this memo: " + register_token
+            await ctx.send(msg)
+        except:
+            await ctx.send(traceback.format_exc())
+
+    #user_registerer.map_user()
     
 @bot.listen()
 async def on_message(message):
