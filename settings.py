@@ -1,4 +1,5 @@
 import json
+import os
 
 class Settings():
 
@@ -87,7 +88,7 @@ class Settings():
         st = json.load(file)
 
         try: 
-            self.discord_token = st["discord_token"]
+            self.discord_token = os.environ['SCCBOT_TOKEN']
             self.channels = st["channels"]
 
 
@@ -119,7 +120,13 @@ def test_is_channel_deletable():
     my_settings.load()
     my_settings.is_channel_deletable()
 
+
+def test_print_token_env():
+    #print(os.environ)
+    print("Token: %s" % os.environ['SCCBOT_TOKEN'])
+
 if __name__ == "__main__":
 
-    test_set_channel_id()
+    #test_set_channel_id()
+    test_print_token_env()
 

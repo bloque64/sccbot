@@ -2,12 +2,12 @@
     "categories": [
         {
             "deletable": false,
-            "id": 442265677819019275,
+            "id": 443062916262920192,
             "name": "PROMOCION"
         },
         {
             "deletable": true,
-            "id": 442265680469950474,
+            "id": 443062922453843999,
             "name": "POSTS_CURABLES"
         }
     ],
@@ -15,27 +15,27 @@
         {
             "category": "PROMOCION",
             "deletable": false,
-            "id": 0,
+            "id": 443062917995429892,
             "name": "ciencia"
         },
         {
             "category": "PROMOCION",
             "deletable": true,
-            "id": 0,
+            "id": 443062920109359116,
             "name": "gente_nueva"
         },
         {
             "category": "POSTS_CURABLES",
             "deletable": true,
-            "id": 0,
+            "id": 443062941248389140,
             "name": "ciencia"
         },
         {
             "category": "POSTS_CURABLES",
             "deletable": true,
-            "id": 0,
+            "id": 443062943983337499,
             "name": "gente_nueva"
         }
     ],
-    "discord_token": "NDM0Mzc0NDEwNzcwNTc5NDYy.DbJgIQ.dggA7YLdly30MeSRto-8Z0gbyAE"
+    "discord_token": ""
 }

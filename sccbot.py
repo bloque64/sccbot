@@ -4,6 +4,7 @@ import secrets
 from secrets import token_hex
 from settings import Settings
 import data
+import evaluator
 
 __author__ = "@pgarcgo"
 __version__ = "0.1"
@@ -15,7 +16,12 @@ steem_curation_account = "sccb"
 settings = Settings()
 settings.load()
 
+message_evaluator = evaluator.MessageEvaluator()
+
 TOKEN = settings.discord_token
+
+print("Bot TOKEN: %s" % TOKEN)
+print("Discord.py version: %s" % discord.__version__)
 
 
 bot = commands.Bot(command_prefix='!') 
@@ -42,10 +48,19 @@ async def init(ctx):
         cat = await guild.create_category(c["name"])
         settings.set_category_id(c["name"], cat.id)
         channels = settings.get_channels_by_cat(c["name"])
+        #await ctx.send("Int Category: %s" % cat.name)
         for ch in channels:
+            await ctx.send("Creating channel: %s" % chr)
             chan = await guild.create_text_channel(ch["name"], category=cat)
+            settings.set_channel_id(channel_name = ch["name"], category_name = c["name"], id=chan.id)
     
     settings.save()
+
+@bot.command()
+async def shutdown(ctx):
+    bot.close()
+    await ctx.send("Shutting down sccbot!!.\nAfter this, manual re-start on server side is needed!!")
+    exit()
 
 @bot.command()
 async def force_delete(ctx):
@@ -85,9 +100,19 @@ async def on_message(message):
     if(message.author == bot.user):
         return
 
+    message_evaluator.evaluate_message(message)
     
 #await channel.send(message.content)
 
+def exit_gracefully():
+    print("Quiting sccbot...")
     
 print("Runnng bot...")
-bot.run(TOKEN)
+
+try:
+    bot.run(TOKEN)
+except KeyboardInterrupt:
+    pass
+finally:
+    exit_gracefully()
+
