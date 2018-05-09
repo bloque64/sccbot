@@ -20,7 +20,7 @@ sa_session = data.init()
 settings = Settings()
 settings.load()
 
-message_evaluator = evaluator.MessageEvaluator()
+message_evaluator = evaluator.MessageEvaluator(settings)
 user_registerer = register.UserRegisterer(sa_session)
 curator = curator.Curator()
 
@@ -128,7 +128,10 @@ async def on_message(message):
     if(message.author == bot.user):
         return
 
-    message_evaluator.evaluate_message(message)
+    result = message_evaluator.check_message(message)
+    await channel.send(result)
+    if(result["check_status"] == "KO"):
+        await channel.send(result["check_message"])
     
 #await channel.send(message.content)
 

@@ -50,6 +50,12 @@ class Settings():
         return(False)
         
     
+    def get_category_ids(self):
+
+        output = [key["id"] for key in self.categories]
+        return(output)
+
+
     def get_categories(self):
         return(self.categories)
 
@@ -90,6 +96,7 @@ class Settings():
         try: 
             self.discord_token = os.environ['SCCBOT_TOKEN']
             self.channels = st["channels"]
+            self.categories = st["categories"]
 
 
         except KeyError as e:
@@ -125,8 +132,15 @@ def test_print_token_env():
     #print(os.environ)
     print("Token: %s" % os.environ['SCCBOT_TOKEN'])
 
+
+def test_get_category_ids():
+    my_settings = Settings()
+    my_settings.load()
+    print(my_settings.get_category_ids())
+
 if __name__ == "__main__":
 
     #test_set_channel_id()
-    test_print_token_env()
+    #test_print_token_env()
+    test_get_category_ids()
 
