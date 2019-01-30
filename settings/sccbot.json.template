@@ -1,0 +1,65 @@
+{
+
+       "steem_rpc_nodes": [
+
+       {"host": "rpc.buildteam.io", "http_port": "", "http_port":"443", "HTTP":false,"HTTPS": true, "owner":"themarkymark"},
+       {"host": "steemd.privex.io", "http_port": "80", "http_port":"443", "HTTP":true,"HTTPS": true, "owner":"privex"},
+       {"host": "rpc.buildteam.io", "http_port": "", "http_port":"443", "HTTP":false,"HTTPS": true, "owner":"themarkymark"},
+       {"host": "rpc.steemviz.com", "http_port": "80", "http_port":"443", "HTTP":true, "HTTPS": true, "owner":"ausbitbank"}
+
+   ],
+
+
+
+    "categories": [
+        {
+            "deletable": false,
+            "id": 460505491601358878,
+            "name": "PROMOCION"
+        },
+        {
+            "deletable": true,
+            "id": 460505496290590722,
+            "name": "POSTS_CURABLES"
+        }
+    ],
+    "channels": [
+        {
+            "category": "",
+            "deletable": false,
+            "id": 460505519044689950,
+            "name": "log"
+        },
+        {
+            "category": "",
+            "deletable": false,
+            "id": 460505520609034249,
+            "name": "admin"
+        },
+        {
+            "category": "PROMOCION",
+            "deletable": true,
+            "id": 460505493308440586,
+            "name": "ciencia"
+        },
+        {
+            "category": "PROMOCION",
+            "deletable": true,
+            "id": 460505495241883658,
+            "name": "gente_nueva"
+        },
+        {
+            "category": "POSTS_CURABLES",
+            "deletable": true,
+            "id": 460505514120445963,
+            "name": "ciencia"
+        },
+        {
+            "category": "POSTS_CURABLES",
+            "deletable": true,
+            "id": 460505516293226506,
+            "name": "gente_nueva"
+        }
+    ],
+    "discord_token": ""
+}

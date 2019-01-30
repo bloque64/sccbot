@@ -1,0 +1,18 @@
+Last status check: 2018-06-20 06:02:35 GMT
+┌─────────────────────────────────┬───────────────────┬──────┬───────┬───────────┬────────────┬────────┬──────────────────────┐
+│            HOSTNAME             │       OWNER       │ HTTP │ HTTPS │ HTTP PORT │ HTTPS PORT │ STATUS │ CURRENT STATUS SINCE │
+├─────────────────────────────────┼───────────────────┼──────┼───────┼───────────┼────────────┼────────┼──────────────────────┤
+│ steemd.steemgigs.org            │ @surpassinggoogle │ YES  │ YES   │ 80        │ 443        │ DOWN   │ 2018-02-18 04:50:03  │
+│ appbasetest.timcliff.com        │ @timcliff         │ YES  │ YES   │ 80        │ 443        │ DOWN   │ 2018-06-09 06:50:50  │
+│ steemd.minnowsupportproject.org │ @followbtcnews    │ YES  │ YES   │ 80        │ 443        │ UP     │ 2018-05-29 04:02:02  │
+│ steemd.privex.io                │ @privex           │ YES  │ YES   │ 80        │ 443        │ UP     │ 2018-06-20 05:50:02  │
+│ rpc.buildteam.io                │ @themarkymark     │ NO   │ YES   │ --        │ 443        │ UP     │ 2018-06-18 15:22:33  │
+│ steemd.pevo.science             │ @pharesim         │ YES  │ YES   │ 80        │ 443        │ UP     │ 2018-06-20 02:42:44  │
+│ rpc.steemviz.com                │ @ausbitbank       │ YES  │ YES   │ 80        │ 443        │ UP     │ 2018-06-20 02:08:04  │
+│ rpc.curiesteem.com              │ @curie            │ NO   │ YES   │ --        │ 443        │ UP     │ 2018-06-20 05:58:03  │
+│ gtg.steem.house                 │ @gtg              │ NO   │ YES   │ --        │ 8090       │ UP     │ 2018-06-20 05:58:01  │
+│ api.steem.house                 │ @gtg              │ NO   │ YES   │ --        │ 443        │ UP     │ 2018-06-20 04:48:05  │
+│ seed.bitcoiner.me               │ @bitcoiner        │ YES  │ YES   │ 80        │ 443        │ UP     │ 2018-06-04 19:38:04  │
+│ rpc.steemliberator.com          │ @netuoso          │ YES  │ YES   │ 80        │ 443        │ DOWN   │ 2018-04-22 18:42:04  │
+│ api.steemit.com                 │ @steemit          │ NO   │ YES   │ --        │ 443        │ UP     │ 2018-06-19 23:48:13  │
+└─────────────────────────────────┴───────────────────┴──────┴───────┴───────────┴────────────┴────────┴──────────────────────┘
