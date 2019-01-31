@@ -108,6 +108,7 @@ if __name__ == '__main__':
 
     suite = unittest.TestSuite()
     #suite.addTest(TestAddUsers("test_add_user"))
-    suite.addTest(TestDeleteUsers("test_del_all_users"))
+    #suite.addTest(TestDeleteUsers("test_del_all_users"))
+    suite.addTest(TestValidateUsers("test_validate_pending"))
     runner = unittest.TextTestRunner()
     runner.run(suite)
