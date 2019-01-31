@@ -1,16 +1,17 @@
-import sys 
-sys.path.append('..')
+import sys
 import unittest
-import data
-from  settings import Settings
+sys.path.append("../sccbot")
+import data as data
+from data import User
+from settings import Settings
 from register import UserRegisterer
 
 
-settings_path = "../settings/"
+settings_path = "../config/"
 
 def create_test_user1():
 
-    user1 = data.User()
+    user1 = User()
     user1.discord_member_id = "253584245790867457"
     user1.discord_member_name = "pgarcgo [cervantes]#0325"
     user1.steem_account = "pgarcgo"

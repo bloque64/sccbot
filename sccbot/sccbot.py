@@ -25,7 +25,7 @@ steem_curation_account = "sccb"
 
 sa_session = data.return_session()
 
-settings = Settings(sa_session, "./settings/")
+settings = Settings(sa_session, "../config/")
 settings.load()
 
 data.create_tables()
@@ -45,6 +45,14 @@ print("Database Name: %s" % settings.sccbot_db_name)
 
 bot = commands.Bot(command_prefix=COMMAND_PREFIX)
 
+
+
+async def my_background_task():
+        await bot.wait_until_ready()
+        counter = 0
+        while not bot.is_closed():
+            counter += 1
+            await asyncio.sleep(1) # task runs every 60 seconds
 
 #A function to log messages on a configurable channel.
 async def log_message(msg):
@@ -283,6 +291,7 @@ def exit_gracefully():
 print("Runnng bot...")
 
 try:
+    bg_task = bot.loop.create_task(my_background_task())
     bot.run(TOKEN)
 except KeyboardInterrupt:
     pass

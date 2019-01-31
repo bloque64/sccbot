@@ -252,5 +252,7 @@ if __name__ == "__main__":
     #test_get_category_ids()
     #test_get_deletable_channels_ids()
 
-    test_print_sccbot_user_env()
+    sa_session = data.return_session()
+    my_settings = Settings(sa_session,"../settings/")
+    my_settings.load()
 
