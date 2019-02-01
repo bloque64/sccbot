@@ -37,7 +37,7 @@ class Settings():
         self.registered_users = None
 
         self.bot_name = "sccbot"
-        self.registrant_account = os.environ["SCCBOT_REGISTRANT_ACCOUNT"]
+        self.registrant_account = ""
 
 
         self.settings_file = path + "sccbot.json"
@@ -134,7 +134,7 @@ class Settings():
         
         d = dict()
 
-        
+        d["registrant_account"] = self.registrant_account
         d["steem_rpc_nodes"] = self.steem_rpc_nodes
         d["discord_token"] = self.discord_token
         d["channels"] = self.channels
@@ -160,6 +160,7 @@ class Settings():
 
         try: 
 
+            self.registrant_account = st["registrant_account"]
             self.steem_rpc_nodes = st["steem_rpc_nodes"]
             self.channels = st["channels"]
             self.categories = st["categories"]

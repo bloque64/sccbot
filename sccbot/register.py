@@ -107,13 +107,14 @@ class UserRegisterer():
         except:
             return(False)
 
-    def get_update_verification_token(discord_id, verification_token):
+    def update_verification_token(discord_id, verification_token):
         try:
+
             user = self.get_user_by_discord_id(discord_id)
             user.verification_token = verification_token
             self.sa_session.commit()
         except Exception as e:
-            raise e
+            raise Exception("Could not verify token %s for user: %s" % (user.verifiction_token, discord_id))
 
 
     def get_transfer_ops(self, origin_account="",target_account = "", op_nr=100):
@@ -143,26 +144,22 @@ class UserRegisterer():
             print("Searching to transfer ops from %s to %s with memo:: '%s'" % (user.steem_account, self.settings.registrant_account, user.verification_token))
             ops = self.get_transfer_ops(origin_account = user.steem_account, target_account = self.settings.registrant_account, op_nr = 1000)
             #ops = self.get_transfer_ops(origin_account = user.steem_account, target_account = self.settings.registrant_account, op_nr = 10000)
-            if len(ops)>0:
+            if len(ops)==0:
 
+                print(len(ops))
                 for op in ops:
                     print(op)
 
-                    # transfer op json format: ['transfer', {'from': 'pgarcgo', 'to': 'vota', 'amount': '0.001 STEEM', 'memo': '12345678910'}]
-                    if(op[1]["memo"]==user.verification_token):
-                        user.verification_status = data.VS_ACCEPTED
-                        self.settings.sa_session.commit()
-                        print("User registration sucessfully validated: %s" % user.steem_account)
-                        break # if at least one transaction op existing with valid veritication token, no further scan needed.
+                    # # transfer op json format: ['transfer', {'from': 'pgarcgo', 'to': 'vota', 'amount': '0.001 STEEM', 'memo': '12345678910'}]
+                    # if(op[1]["memo"]==user.verification_token):
+                    #     user.verification_status = data.VS_ACCEPTED
+                    #     self.settings.sa_session.commit()
+                    #     print("User registration sucessfully validated: %s" % user.steem_account)
+                    #     break # if at least one transaction op existing with valid veritication token, no further scan needed.
+                    # else:
+                    #     print("Memo not found in recent transfers operations: %s" % user.verification_token)
 
             else:
                 print("There as not beeing any recent transfer transaction from '@%s' to '@%s'" %(user.steem_account, self.settings.registrant_account))
 
-
-if __name__ == "__main__":
-
-    sa_session = data.return_session()
-    settings = Settings(sa_session)
-    r = UserRegisterer(settings=settings)
-    r.validate_pending()
-    pass
+        print("exit")

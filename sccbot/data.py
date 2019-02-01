@@ -43,7 +43,7 @@ class User(base):
     role = Column(String(10))          # "CURATOR", "CLEANER"
     level = Column(String(10))         # "BEGNNER, GOOD, EXCELENT, MASTER
     verification_status = Column(String(10))   # "PENDING", "ACCEPTED", "REJECTED"
-    verification_token = Column(String(30))
+    verification_token = Column(String(100))
     reputation = Column(Integer)               # Integer 0 to 100
 
     

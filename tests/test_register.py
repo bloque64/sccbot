@@ -16,7 +16,7 @@ def create_test_user1():
     user1.discord_member_name = "pgarcgo [cervantes]#0325"
     user1.steem_account = "pgarcgo"
     user1.verification_status = data.VS_PENDING
-    user1.verification_token = "12345678910"
+    user1.verification_token = "74875725480c3eb46912c1bbbfbcc9d6"
 
     return(user1)
 
@@ -58,6 +58,9 @@ class TestAddUsers(unittest.TestCase):
 
 class TestValidateUsers(unittest.TestCase):
 
+        def setUp(self):
+            print("Setting up test")
+
         def test_validate_pending(self):
 
             data.drop_tables()
@@ -77,6 +80,9 @@ class TestValidateUsers(unittest.TestCase):
 
 
             sa_session.close()
+
+        def tearDown(self):
+            print("tear down test")
 
 class TestDeleteUsers(unittest.TestCase):
 
@@ -112,3 +118,4 @@ if __name__ == '__main__':
     suite.addTest(TestValidateUsers("test_validate_pending"))
     runner = unittest.TextTestRunner()
     runner.run(suite)
+    print("Exit Test Units")

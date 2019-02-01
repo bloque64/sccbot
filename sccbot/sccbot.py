@@ -21,7 +21,6 @@ __author__ = "@pgarcgo"
 __version__ = "0.1"
 
 name = "Steem Community Curation BOT"
-steem_curation_account = "sccb"
 
 sa_session = data.return_session()
 
@@ -203,7 +202,11 @@ async def _new(ctx, steem_account_name: str):
 
         await ctx.send("Added steem account to the registering qeue: " + steem_account_name)
         register_token = token_hex(16)
-        msg = "Sent 0.001 SBD to this following account  ***"  + steem_curation_account + "*** using this memo: " + register_token
+        msg = "Sent 0.001 SBD to this following account  ***"  + settings.registrant_account + "*** using this memo: " + register_token
+        
+        print("new_user.discord_member_id: %s" % new_user.discord_member_id)
+        print("new_user.discord_member_id: %s" % new_user.discord_member_id)
+        user_registerer.update_verification_token(discord_id = new_user.discord_member_id, verification_token = register_token)
         await ctx.send(msg)
 
     except Exception as e:
@@ -226,7 +229,7 @@ async def _new_error(ctx, error):
                                      role=data.USER_ROLE_REGISTERED)
             await ctx.send("Added steem account to the registering qeue: " + steem_account_name)
             register_token = token_hex(16)
-            msg = "Sent 0.001 SBD to this following account  ***"  + steem_curation_account + "*** using this memo: " + register_token
+            msg = "Sent 0.001 SBD to this following account  ***"  + settings.registrant_account + "*** using this memo: " + register_token
             await ctx.send(msg)
         except:
             await ctx.send(traceback.format_exc())
