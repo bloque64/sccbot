@@ -70,6 +70,12 @@ class Post(base):
     upvotes = Column(Integer)
     #promoted_by = Column(User)
 
+class Category(base):
+
+    __tablename__ = 'category'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256))
+    description = Column(String(256))
 
 def return_session():
 
@@ -93,7 +99,17 @@ def create_tables():
 def get_users():
     return(session_instance.query(User))
 
+
+def reset_and_inicialize():
+    drop_tables()
+    create_tables()
+    populate_default_categories()
+
+
+def populate_default_categories()
+
 if __name__ == "__main__":
 
     #s = init()
-    print("%s" % sscbot_admin_user)
+    #print("%s" % sscbot_admin_user)
+    create_tables()

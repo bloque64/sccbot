@@ -35,10 +35,5 @@ class TestRegisterMethods(unittest.TestCase):
             user_registerer.add_user(user1)
 
 
-
-        def test_del_(self):
-
-
-
 if __name__ == '__main__':
     unittest.main()
