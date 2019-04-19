@@ -5,7 +5,7 @@ __version__ = "1.0"
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import sessionmaker
 import os
 
@@ -45,7 +45,14 @@ class User(base):
     verification_status = Column(String(10))   # "PENDING", "ACCEPTED", "REJECTED"
     verification_token = Column(String(100))
     reputation = Column(Integer)               # Integer 0 to 100
+    registerd_on = Column(DateTime)
+    validated_on = Column(DateTime)
 
+
+
+    def to_json(self):
+
+        return(self.steem_account)
     
     def __repr__(self):
         return "<User(discord_name='%s' (%s), steem_name='%s')>" % (self.discord_member_name, self.discord_member_id, self.steem_account)
@@ -106,7 +113,8 @@ def reset_and_inicialize():
     populate_default_categories()
 
 
-def populate_default_categories()
+def populate_default_categories():
+    exit
 
 if __name__ == "__main__":
 

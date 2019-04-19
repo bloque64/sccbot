@@ -16,6 +16,7 @@ import register
 import manager
 import traceback
 from data import User, Post
+from datetime import datetime
 
 __author__ = "@pgarcgo"
 __version__ = "0.1"
@@ -89,8 +90,9 @@ async def list_channels(ctx):
 async def init_db(ctx):
 
     try:
+        data.drop_tables()
         data.create_tables()
-        msg = "Tables created!"
+        msg = "Tables deleted and created again!"
         await ctx.send(msg)
         await log_message(msg)
 
@@ -197,6 +199,7 @@ async def _new(ctx, steem_account_name: str):
         new_user.steem_account = steem_account_name
         new_user.role = data.USER_ROLE_REGISTERED
         new_user.verification_status = data.VS_PENDING
+        new_user.registerd_on =datetime.now()
 
         user_registerer.add_user(new_user)
 

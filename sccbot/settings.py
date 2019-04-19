@@ -38,6 +38,8 @@ class Settings():
 
         self.bot_name = "sccbot"
         self.registrant_account = ""
+        self.default_users = []
+        self.default_users.append(User())
 
 
         self.settings_file = path + "sccbot.json"
@@ -139,6 +141,7 @@ class Settings():
         d["discord_token"] = self.discord_token
         d["channels"] = self.channels
         d["categories"] = self.categories
+        d["default_users"] = self.default_users
 
         return(json.dumps(d,indent=4, sort_keys=True))
 

@@ -49,8 +49,6 @@ class UserRegisterer():
             self.settings.sa_session.rollback()
             raise Exception("Could not deleted users")
 
-
-
     def add_user(self, m_user):
 
 
