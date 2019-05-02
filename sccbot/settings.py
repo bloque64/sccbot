@@ -22,6 +22,12 @@ class Settings():
         self.sccbot_db_host = os.environ["SCCBOT_DB_HOST"]
         self.sccbot_db_name = os.environ["SCCBOT_DB_NAME"]
 
+        self.sccbot_test_discord_member_name = os.environ["SCCBOT_TEST_DISCORD_MEMBER_NAME"]
+        self.sccbot_test_discord_id= os.environ["SCCBOT_TEST_DISCORD_ID"]
+
+        self.sccbot_test_steem_account = os.environ["SCCBOT_TEST_STEEM_ACCOUNT"]
+        self.sccbot_test_steem_account_ak = os.environ["SCCBOT_TEST_STEEM_ACCOUNT_AK"]
+
 
         self.channels = [{"name":"ciencia", "category":"PROMOCION", "id":0, "deletable":False},
            {"name":"gente_nueva", "category":"PROMOCION", "id":0, "deletable":True},

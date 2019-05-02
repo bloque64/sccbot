@@ -6,17 +6,20 @@ from data import User
 from settings import Settings
 from register import UserRegisterer
 
+TEST_VERIFICATION_TOKEN = "74875725480c3eb46912c1bbbfbcc9d6"
 
 settings_path = "../config/"
+sa_session = data.return_session()
+settings = Settings(sa_session, settings_path)
 
 def create_test_user1():
 
     user1 = User()
-    user1.discord_member_id = "253584245790867457"
-    user1.discord_member_name = "pgarcgo [cervantes]#0325"
-    user1.steem_account = "pgarcgo"
+    user1.discord_member_id = settings.sccbot_test_discord_id
+    user1.discord_member_name = settings.sccbot_test_discord_member_name 
+    user1.steem_account = settings.sccbot_test_steem_account
     user1.verification_status = data.VS_PENDING
-    user1.verification_token = "74875725480c3eb46912c1bbbfbcc9d6"
+    user1.verification_token = TEST_VERIFICATION_TOKEN
 
     return(user1)
 
