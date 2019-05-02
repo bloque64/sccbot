@@ -79,10 +79,18 @@ class Post(base):
 
 class Category(base):
 
-    __tablename__ = 'category'
+    __tablename__ = 'categories'
     id = Column(Integer, primary_key=True)
     name = Column(String(256))
     description = Column(String(256))
+
+
+class BlackListedUser(base):
+
+    __tablename__ = 'black_list'
+    id = Column(Integer, primary_key=True)
+    steem_account = Column(String(30))
+    reason = Column(String(256))
 
 def return_session():
 
@@ -120,4 +128,4 @@ if __name__ == "__main__":
 
     #s = init()
     #print("%s" % sscbot_admin_user)
-    create_tables()
+    reset_and_inicialize()
