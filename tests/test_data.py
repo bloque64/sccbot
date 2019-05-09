@@ -67,5 +67,19 @@ class TestRegisterMethods(unittest.TestCase):
             user_registerer.delete_users()
 
 
+        def test_get_chanel_by_id(self):
+            
+            data.drop_tables()
+            data.create_tables()
+
+            sa_session = data.return_session()
+            settings = Settings(sa_session, settings_path)
+            settings.load()
+
+            print(settings.get_categories())
+            #data.get_channel_by_id():
+
+
+
 if __name__ == '__main__':
     unittest.main()

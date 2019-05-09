@@ -5,14 +5,14 @@ __version__ = "1.0"
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy.orm import sessionmaker
 import os
 
 
 
 USER_ROLE_REGISTERED = "REGISTERED"
-USER_LEVEL_BEGGINER = "BEGINNER"
+USER_LEVEL_BEGINER = "BEGINNER"
 USER_LEVEL_GOOD = "GOOD"
 USER_LEVEL_EXCELENT = "EXCELENT"
 USER_LEVEL_MASTER = "MASTER"
@@ -47,6 +47,7 @@ class User(base):
     reputation = Column(Integer)               # Integer 0 to 100
     registerd_on = Column(DateTime)
     validated_on = Column(DateTime)
+    is_admin = Column(Boolean)
 
 
 

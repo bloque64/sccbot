@@ -17,6 +17,7 @@ import manager
 import traceback
 from data import User, Post
 from datetime import datetime
+import result
 
 __author__ = "@pgarcgo"
 __version__ = "0.1"
@@ -282,6 +283,9 @@ async def on_message(message):
         else:
             m_user = user_registerer.get_user_by_discord_id(r.curator_discord_id)
             r = curator.promote_post(user = m_user, url = r.content)
+
+            if(r.status=)
+
             await log_message(r.message3p)
             await send_private_message(r.message1p, message.author.id)
 
